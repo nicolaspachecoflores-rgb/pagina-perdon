@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedir Perdón Interactivo</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f0; padding: 20px; }
+    .hidden { display: none; }
+    .imagen { width: 250px; margin-top: 20px; }
+    button { font-size: 18px; padding: 10px 20px; margin: 10px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<!-- Pantalla inicial -->
+<div id="pantalla1">
+    <h1>Hola Grace, machuca la carta p</h1>
+    <img src="carta.png" alt="Carta" class="imagen" id="carta">
+</div>
+
+<!-- Pantalla 2: Homero triste -->
+<div id="pantalla2" class="hidden">
+    <h2>¿Me disculpas grace?</h2>
+    <img src="homero_triste.png" alt="Homero triste" class="imagen">
+    <div>
+        <button id="btnSi1">Sí</button>
+        <button id="btnNo1">No</button>
+    </div>
+</div>
+
+<!-- Pantalla 3a: Homero y Marge abrazados + video debajo -->
+<div id="pantalla3a" class="hidden">
+    <h2>Prometo mejorar esto, vez como nos vemos sin ningun problema mi grace, disculpa por tratarte haci y cumplire mi palabra, por ahora hay que ir por un chifita</h2>
+    <!-- Imagen -->
+    <img src="homero_marge_abrazo.png" alt="Homero y Marge abrazados" class="imagen">
+    <!-- Video debajo de la imagen -->
+    <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/HrO_XR2rJbs" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+</div>
+
+
+<!-- Pantalla 3b: Homero sonriente -->
+<div id="pantalla3b" class="hidden">
+    <h2>Tú sabes que no podemos estar peleados mi grace</h2>
+    <img src="homero_sonriente.png" alt="Homero sonriente" class="imagen">
+    <div>
+        <button id="btnSi2">Sí</button>
+        <button id="btnNo2">No</button>
+    </div>
+</div>
+
+<!-- Pantalla 4: Homero enojado, pero las dos opciones son Sí -->
+<div id="pantalla4" class="hidden">
+    <h2>Cargosa eres no? Perdóname p, ya no volverá a pasar</h2>
+    <img src="homero_enojado.png" alt="Homero enojado" class="imagen">
+    <div>
+        <!-- Ambos botones dicen Sí -->
+        <button id="btnSi3">Sí</button>
+        <button id="btnNo3">Sí</button>
+    </div>
+</div>
+
+
+<!-- Pantalla final: Homero y Marge abrazados + video -->
+<div id="pantallaFinal" class="hidden">
+    <h2>Prometo mejorar esto, vez como nos vemos sin ningun problema mi grace, disculpa por tratarte haci y cumplire mi palabra, por ahora hay que ir por un chifita</h2>
+    <!-- Imagen -->
+    <img src="homero_marge_abrazo.png" alt="Homero y Marge abrazados" class="imagen">
+    <!-- Video debajo de la imagen -->
+   <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/HrO_XR2rJbs" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+</div>
+
+
+<script>
+    const carta = document.getElementById('carta');
+    const pantalla1 = document.getElementById('pantalla1');
+    const pantalla2 = document.getElementById('pantalla2');
+    const pantalla3a = document.getElementById('pantalla3a');
+    const pantalla3b = document.getElementById('pantalla3b');
+    const pantalla4 = document.getElementById('pantalla4');
+    const pantallaFinal = document.getElementById('pantallaFinal');
+
+    // Pantalla 1 → clic en carta
+    carta.addEventListener('click', () => {
+        pantalla1.classList.add('hidden');
+        pantalla2.classList.remove('hidden');
+    });
+
+    // Pantalla 2: botones Sí / No
+    document.getElementById('btnSi1').addEventListener('click', () => {
+        pantalla2.classList.add('hidden');
+        pantalla3a.classList.remove('hidden');
+    });
+    document.getElementById('btnNo1').addEventListener('click', () => {
+        pantalla2.classList.add('hidden');
+        pantalla3b.classList.remove('hidden');
+    });
+
+    // Pantalla 3b: botones Sí / No
+    document.getElementById('btnSi2').addEventListener('click', () => {
+        pantalla3b.classList.add('hidden');
+        pantallaFinal.classList.remove('hidden');
+    });
+    document.getElementById('btnNo2').addEventListener('click', () => {
+        pantalla3b.classList.add('hidden');
+        pantalla4.classList.remove('hidden');
+    });
+
+    // Pantalla 4: botones Sí / No → ambos llevan a pantalla final
+    document.getElementById('btnSi3').addEventListener('click', () => {
+        pantalla4.classList.add('hidden');
+        pantallaFinal.classList.remove('hidden');
+    });
+    document.getElementById('btnNo3').addEventListener('click', () => {
+        pantalla4.classList.add('hidden');
+        pantallaFinal.classList.remove('hidden');
+    });
+</script>
+</body>
+</html>
